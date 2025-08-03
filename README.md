@@ -1,4 +1,4 @@
-# ytDownDesk
+# yt-downloader
 
 Una aplicación de escritorio sencilla para descargar videos de YouTube, con opciones para descargar solo audio o la máxima calidad disponible.
 
