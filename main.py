@@ -1,3 +1,15 @@
+# yt-downloader
+# Descargador de videos de YouTube
+# Autor: CodingCruz
+# Fecha: 2025-08-09
+# Versión: 1.0
+#
+# Python 3.13.5
+# tkinter 8.6
+# ttkbootstrap 1.10.1
+# yt-dlp 2025.08.09
+
+
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
@@ -7,6 +19,7 @@ import yt_dlp
 import threading
 from queue import Queue
 
+# Función para descargar el video
 def download_video():
     url = url_entry.get()
     if not url:
@@ -26,6 +39,7 @@ def download_video():
     thread = threading.Thread(target=download_thread, args=(url, save_path, audio_only, max_quality))
     thread.start()
 
+# Función para manejar la descarga en un hilo separado
 def download_thread(url, save_path, audio_only, max_quality):
     ydl_opts = {
         'outtmpl': os.path.join(save_path, '%(title)s.%(ext)s'),
@@ -55,6 +69,7 @@ def download_thread(url, save_path, audio_only, max_quality):
     finally:
         root.after(0, lambda: download_btn.config(state='normal'))
 
+# Clase personalizada para el logger
 class MyLogger:
     def __init__(self, queue):
         self.queue = queue
